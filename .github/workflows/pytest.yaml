@@ -1,0 +1,24 @@
+name: Run Pytest
+
+on:
+  pull_request:
+    branch: ["main"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cheackout repository
+        uses: action/checkout@v5
+
+      - name: Setup Python
+        uses: action/setup-phthon@v5
+        with:
+          python-version: 3.13
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run phtest
+        run: Pytest
